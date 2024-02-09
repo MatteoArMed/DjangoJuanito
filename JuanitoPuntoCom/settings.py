@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure--0j=_nr_1ebkca=h60xgz#6j%+^%2_oo()-rnos6nz0d3-n%0t
 DEBUG = False
 
 ALLOWED_HOSTS = ['juanitopuntocom.sa-east-1.elasticbeanstalk.com']
-
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
