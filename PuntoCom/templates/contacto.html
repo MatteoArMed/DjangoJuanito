@@ -1,0 +1,83 @@
+{% extends './base.html' %}
+
+{% load static %} 
+
+{% block contenido %}  
+
+<link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+
+
+<div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-1 text-center mx-auto Cajacontacto">
+
+<div class="col-sm-12 col-md-12 col-lg-8">
+
+
+<div class="col-sm-12 col-md-9 mb-4 mx-auto  Textoderecho">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'imagenes/obracivil3.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'imagenes/obracivil2.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'imagenes/obracivil1.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div> 
+
+<div class="card mb-4 shadow-lg border border-0 Textoderecho">
+    <div class="row g-0">
+    <div class="col-md-12">  
+    <div class="card-body">
+        <h5 class="card-title">Trabajos</h5>
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    </div>
+</div>
+</div> 
+    
+</div>
+
+<div class="col-sm-12 col-md-9 col-lg-4 shadow-lg border border-0 form-container">
+<h2>Contáctanos</h2>
+<form action="" method="post">
+    {% csrf_token %}
+<div class="form-group">
+    <label class="form-label" for="nombre" >Correo:</label>
+    <input class="form-control" type="email" id="nombre" name="nombre" required placeholder="@JuanitoPuntocom">
+</div>
+<div class="form-group">
+    <label class="form-label" for="tipo_trabajo">Tipo de trabajo:</label>
+    <select class="form-control" id="tipo_trabajo" name="tipo_trabajo">
+        <option value="otras" selected>Otros</option>
+        <option value="obrasmenores">Obras Menores</option>
+        <option value="gasfiteria">Gasfiteria</option>
+        <option value="fozas">Instalación de foza</option>
+    </select>
+</div>
+<div class="form-group">
+    <label class="form-label" for="descripcion">Descripción:</label>
+    <textarea class="form-control" id="descripcion" name="descripcion" rows="13"></textarea>
+</div>
+<button class="btn btn-outline-dark" type="submit">Enviar</button>
+</form>
+
+
+
+</div>
+
+</div>  
+
+{% endblock %}
+    

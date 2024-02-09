@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="autor" content="Matteo Araneda Medina">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <title>JuanitoPuntoCom</title>
+</head>
+
+<header>
+  <!-- NavBar -->
+  <div class="navbar">
+    <div class="row">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-xl bg-body-tertiary fixed-top" data-bs-theme="dark">
+          <div class="container-fluid">
+            <button class="navbar-toggler bi bi-wrench-adjustable-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLeft" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            </button> <!--Icono izquierdo Navbar-->
+                                  
+            <!-- Parte Izquierda -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbarLeft" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Interior izquierdo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'home' %}">Inicio</a> <!-- Cuanto tiene el 'active' el texto se pone blanco-->
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'servicios' %}">Servicios</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Trabajos
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'gasfiteria' %}">Gasfiteria</a></li>
+                        <hr class="dropdown-divider">
+                      <li><a class="dropdown-item" href="{% url 'fozaseptica' %}">Fozas Septicas</a></li>
+                        <hr class="dropdown-divider">
+                      <li><a class="dropdown-item" href="{% url 'obrasmenores' %}">Obras Menores</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarRight" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button><!--Icono derecho Navbar-->
+
+            <!-- Parte derecha -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarRight" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Interior Derecho</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'quienesomos' %}">¿Quienes Somos?</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- Termino NavBar -->
+
+</header>
+
+<body>
+
+<div class="container">
+    <div class="row">
+      
+        {% block contenido %}
+        {% endblock %}
+
+            
+        {% block contenido2 %}  
+        {% endblock %}
+        
+    </div>
+</div>
+
+</body>
+
+<footer>
+    <div class="legal">
+        <span>© Todos los derechos Reservados</span>
+        <a href="#">Licencia</a>
+        <a href="#">Terminos y Condiciones</a>
+        <a href="#">Privacidad</a>
+        <a href="https://www.flaticon.com/" title="icons">Iconos desde - Flaticon</a>
+    </div>
+</footer>
+
+</html>

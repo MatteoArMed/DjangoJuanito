@@ -1,0 +1,36 @@
+.Servicios{
+    color: #fff;
+    
+}
+.btn{
+    color:#000;
+    background-color:rgba(220,220,220, 0.7);
+    font-weight: bold;
+}
+
+.calefont{
+    width: 500px;
+    height: 400px;
+}
+
+.FozasSepticas{
+    width: 500px;
+    height: 400px;
+    
+}
+.ConstruccionCasa{
+    width: 550px;
+    height: 380px;
+
+}
+.cajaIzquierda{
+
+}
+.cajaDerecha{
+    margin-top: 10%;
+    padding: 3%;
+}
+
+#myTab{
+    justify-content: space-around;
+}
