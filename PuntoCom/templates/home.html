@@ -7,18 +7,18 @@
 <link rel="stylesheet" type="text/css" href="{% static '/css/home.css' %}">
 <style>
     body{
-        background: #000;
+        background: rgba(220,220,220, 0.7);
     }
 </style>
 <div class="container text-center">
 
+    <img src="{{ imagen_url }}" class="d-block w-100 carrusel" alt="ImagenCarrusel1">
 <div class="row Planauno">
 <div id="carouselExampleAutoplaying" class="carousel col-md-6 col-sm-12 slide carousel-fade" data-bs-ride="carousel">
 <div class="carousel-inner col-sm-6">
 <div class="carousel-item active" data-bs-interval="10000">
     <a href="#">
         <!-- <img src="{% static 'imagenes/carrusel5.jpg' %}" class="d-block w-100 carrusel" alt="ImagenCarrusel1"> -->
-        <img src="{{ imagen_url }}" class="d-block w-100 carrusel" alt="ImagenCarrusel1">
     </a>
 </div>
 <div class="carousel-item" data-bs-interval="10000">
