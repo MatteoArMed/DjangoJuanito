@@ -74,6 +74,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'JuanitoPuntoCom.wsgi.application'
 
+# Tell Django to use the S3 storage backend for uploaded media files.
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -135,6 +137,7 @@ STATIC_URL = 'static/'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'imagenes/')
+MEDIA_URL = os.path.join(BASE_DIR, 'css/')
 
 
 # Default primary key field type
