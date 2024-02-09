@@ -4,7 +4,7 @@
 {% block contenido %}
 {% load static %} 
 
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 <div class="container text-center">
 
 <div class="row Planauno">
@@ -16,7 +16,9 @@
     </a>
 </div>
 <div class="carousel-item" data-bs-interval="10000">
-    <img src="{% static 'imagenes/obracivil2.jpg' %}" class="d-block w-100 carrusel" alt="ImagenCarrusel2">
+    <a href="#">
+        <img src="{% static 'imagenes/obracivil2.jpg' %}" class="d-block w-100 carrusel" alt="ImagenCarrusel2">
+    </a>
 </div>
 <div class="carousel-item" data-bs-interval="10000">
 <a href="#">
