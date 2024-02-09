@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 def home(request):
     # Lógica de tu vista...
-    imagen_url = 'https://bucket-django-s3.s3.sa-east-1.amazonaws.com/fondoweb.jpg'  # Ruta relativa a tus archivos estáticos en S3
+    imagen_url = ''  # Ruta relativa a tus archivos estáticos en S3
     return render(request, 'home.html', {'imagen_url': imagen_url})
 
 # def home(request):
