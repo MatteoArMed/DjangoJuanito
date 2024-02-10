@@ -4,8 +4,23 @@
 {% block contenido %}
 {% load static %} 
 
-<link rel="stylesheet" type="text/css" href="https://djangobuket.s3.sa-east-1.amazonaws.com/home.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<style>
+    body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    background: url("https://djangobuket.s3.sa-east-1.amazonaws.com/imagenes/fondoweb.jpg") no-repeat center center fixed;
+    font-family: 'Courier New', Courier, monospace;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
 
+}
+</style>
 
 <div class="container text-center">
 <div class="row Planauno">

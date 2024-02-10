@@ -14,7 +14,7 @@ html{
     color: #ffffff;
     
 }
-body{
+/* body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -27,7 +27,7 @@ body{
     background-size: cover;
     color: #ffffff;
 
-}
+} */
 
 .container{
     flex-grow: 1;
