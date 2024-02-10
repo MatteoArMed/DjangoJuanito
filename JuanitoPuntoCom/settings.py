@@ -75,7 +75,8 @@ TEMPLATES = [
 
 AWS_ACCESS_KEY_ID = 'AKIA2VWFHJZ6N5MTUUQK'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'bucket-django-s3'
+# AWS_STORAGE_BUCKET_NAME = 'bucket-django-s3'
+AWS_STORAGE_BUCKET_NAME = 'djangobuket'
 AWS_S3_REGION_NAME = 'sa-east-1'  # e.g., us-east-1
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
@@ -138,8 +139,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-# STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+# STATIC_URL = 'static/'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
