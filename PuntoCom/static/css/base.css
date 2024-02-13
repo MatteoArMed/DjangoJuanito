@@ -14,12 +14,12 @@ html{
     color: #ffffff;
     
 }
-/* body{
+body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Courier New', Courier, monospace;
-    background: url("https://djangobuket.s3.sa-east-1.amazonaws.com/imagenes/fondoweb.jpg") no-repeat center center fixed;
+    background: url(../imagenes/fondoweb.jpg) no-repeat center center fixed;
     font-family: 'Courier New', Courier, monospace;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -27,7 +27,7 @@ html{
     background-size: cover;
     color: #ffffff;
 
-} */
+}
 
 .container{
     flex-grow: 1;

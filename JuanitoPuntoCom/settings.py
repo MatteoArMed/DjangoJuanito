@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--0j=_nr_1ebkca=h60xgz#6j%+^%2_oo()-rnos6nz0d3-n%0t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['juanitopuntocom.sa-east-1.elasticbeanstalk.com']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['juanitopuntocom.sa-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -73,37 +73,37 @@ TEMPLATES = [
 ]
 
 
-AWS_ACCESS_KEY_ID = 'AKIA2VWFHJZ6N5MTUUQK'
-AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'bucket-django-s3'
-AWS_STORAGE_BUCKET_NAME = 'djangobuket'
-AWS_S3_REGION_NAME = 'sa-east-1'  # e.g., us-east-1
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+# AWS_ACCESS_KEY_ID = 'AKIA2VWFHJZ6N5MTUUQK'
+# AWS_SECRET_ACCESS_KEY = '5LuvGXYJrnS9DSoC1IZ8Fm+hPNRyGqhokt/lnN9e'
+# # AWS_STORAGE_BUCKET_NAME = 'bucket-django-s3'
+# AWS_STORAGE_BUCKET_NAME = 'djangobuket'
+# AWS_S3_REGION_NAME = 'sa-east-1'  # e.g., us-east-1
+# AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 
-# Tell Django to use the S3 storage backend for uploaded media files.
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# # Tell Django to use the S3 storage backend for uploaded media files.
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    'default':{
-        'ENGINE':'django.db.backends.mysql',
-        'NAME': 'DjangoDB',
-        'USER': 'admin',
-        'PASSWORD': 'djangojuanito',
-        'HOST':'djangodb.clk0as8gszng.sa-east-1.rds.amazonaws.com',
-        'PORT': '3307',
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default':{
+#         'ENGINE':'django.db.backends.mysql',
+#         'NAME': 'DjangoDB',
+#         'USER': 'admin',
+#         'PASSWORD': 'djangojuanito',
+#         'HOST':'djangodb.clk0as8gszng.sa-east-1.rds.amazonaws.com',
+#         'PORT': '3307',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -139,12 +139,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-# STATIC_URL = 'static/'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+STATIC_URL = 'static/'
+# STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+# MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 MEDIA_URL = os.path.join(BASE_DIR, 'imagenes/')
 
 
