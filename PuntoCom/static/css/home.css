@@ -37,7 +37,13 @@
     margin: 3%;
 }
 
-.CajaFooter{
-    justify-content: space-around;
+.redesociales{
+    max-height: 50rem;
+    justify-content: space-between;
+    align-items: center;
+
+}
+#iconoredes{
+    max-width: 50px;
 }
 
