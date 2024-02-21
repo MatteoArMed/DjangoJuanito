@@ -38,9 +38,14 @@
 <div class="col-md-6 col-sm-12 justify-content-center">
 <div class="card col-xl-12" style="box-shadow: none; ">
 <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text6">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal m
-</p>              <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h3 class="card-title"><strong>Construcción General JyC</strong></h3>
+    <p class="card-text6 text-start fw-semibold">
+    Nos dedicamos a la construcción y armado de casas (Prefabricadas, Metalcon o desde cero), también se realizan ampliaciones y remodelaciones de distintas estructuras, tales como terrazas, quinchos, cobertizos, habitaciones y baños, además realizamos trabajos de electricidad y soldadura calificada.
+    </p>
+    <p class="card-text6 text-start fw-semibold">
+    Nos preocupamos por cada detalle y trabajo que realizamos, comprometidos a ofrecer resultados excepcionales en cada proyecto, utilizando materiales de primera calidad y técnicas de construcción avanzadas. Ya sea que estés buscando construir una nueva casa, renovar tu espacio existente o realizar mejoras específicas, estamos aquí para hacerlo realidad de manera profesional y confiable.
+    </p>
+    <a href="{% url 'servicios' %}" class="btn btn-outline-dark fw-semibold">Ir a ver los trabajos</a>
 </div>
 </div>
 </div>
@@ -54,7 +59,7 @@
 <div class="card mb-4 mx-auto Iconocolor">
 <div class="row g-0">
     <div class="col-md-5">
-        <a href="#">
+        <a href="{% url 'gasfiteria' %}">
             <img  src="{% static 'imagenes/gasfiter2.png' %}" class="img-fluid Imagentrabajos" alt="...">
         </a>
     </div>
@@ -69,7 +74,7 @@
 <div class="card mb-4 mx-auto Iconocolor">
 <div class="row g-0">
     <div class="col-md-5">
-        <a href="#">
+        <a href="{% url 'fosaseptica' %}">
             <img src="{% static 'imagenes/fozaseptica.png' %}" class="img-fluid Imagentrabajos" alt="...">
         </a>
     </div>
@@ -135,7 +140,7 @@
 
 <div class="card mb-4 Ultimacaja" >
     <div class="col-md-12">
-    <a href="{% url 'fozaseptica' %}">
+    <a href="{% url 'fosaseptica' %}">
         <img src="{% static 'imagenes/fozas.png' %}" class="img-fluid Iconoherramientas" alt="...">
     </a>
     </div>

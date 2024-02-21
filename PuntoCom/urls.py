@@ -8,7 +8,7 @@ urlpatterns = [
     path("contacto",contacto, name="contacto"),
     path("servicios",servicios, name="servicios"),
     path("gasfiteria",gasfiteria, name="gasfiteria"),
-    path("fozaseptica",fozaseptica, name="fozaseptica"),
+    path("fozaseptica",fozaseptica, name="fosaseptica"),
     path("obrasmenores",obrasmenores, name="obrasmenores"),
     path("quienesomos",quienesomos, name="quienesomos"),
 

@@ -12,6 +12,7 @@ html{
     color: #ffffff;
     
 }
+
 body{
     display: flex;
     flex-direction: column;
@@ -34,7 +35,6 @@ body{
     background-color: rgba(0, 0, 0, 0.2);
     border: none;
     padding: auto;
-    border-radius: 16px;    
 }
 
 footer{
