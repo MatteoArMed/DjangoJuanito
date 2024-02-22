@@ -21,8 +21,8 @@ def servicios(request):
 def gasfiteria(request):
     return render(request, 'gasfiteria.html')
 
-def fozaseptica(request):
-    return render(request, 'fozaseptica.html')
+def fosaseptica(request):
+    return render(request, 'fosaseptica.html')
 
 def obrasmenores(request):
     return render(request, 'obrasmenores.html')
