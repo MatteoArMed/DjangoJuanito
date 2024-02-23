@@ -1,37 +1,41 @@
 
 .Cajacontacto {
     margin:1%;
-    border-radius: 1em;
 }
 
 .Textoderecho{
     display: flex;
-    background-color: rgba(220,220,220, 0.7);
+    box-shadow: 4px 6px 2px 1px rgba(22, 22, 26, 0.3);
+    background-color: rgba(255, 255, 255, 0.8);
     justify-content: center;
     max-width: fit-content;
+    color: #000000;
 }
-.Imagencontacto{
-    margin: 2%;
-    max-width: 25rem;
-    align-items: center;
-    border: 20rem;
+.Logocolor{
+    width: 150px;
+    height: 150px;
 
 }
-h2{
-    font-weight: bold;
+
+.Imagencontacto{
+    margin: 5%;
+    max-width: 25rem;
+    align-items: center;
 }
+
 .form-container {
     width: 400px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 1%;
+    padding: 2%;
     border: 1px solid #ccc;
-    background-color: rgba(220,220,220, 0.7);
-    border-radius: 1em;
+    box-shadow: 4px 6px 2px 1px rgba(22, 22, 26, 0.3);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000000;
 
 }
 .form-group {
     margin-bottom: 15px;
-    color: #000;
+    color: #000000;
 }
 .form-label {
     display: block;

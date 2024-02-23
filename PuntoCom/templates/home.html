@@ -2,7 +2,6 @@
 
 
 {% block contenido %}
-
 {% load static %} 
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
@@ -43,10 +42,10 @@
 <div class="card-body">
     <h3 class="card-title fw-bold">Construcción General JyC</h3>
     <p class="card-text6 text-start fw-semibold">
-    Nos dedicamos a la construcción y armado de diversos tipos de casas, ampliaciones y remodelaciones, puedes cotizar con nosotros terrazas, quinchos, cobertizos, habitaciones y baños, además de trabajos de electricidad y soldadura calificada.
+    Nos dedicamos a la construcción y armado de casas (Prefabricadas, Metalcon o desde cero), también se realizan ampliaciones y remodelaciones de distintas estructuras, tales como terrazas, quinchos, cobertizos, habitaciones y baños, además realizamos trabajos de electricidad y soldadura calificada.
     </p>
     <p class="card-text6 text-start fw-semibold">
-    Realizamos trabajos desde Valparaiso hasta O'Higgins, comprometidos a ofrecer resultados excepcionales en cada proyecto, utilizamos materiales de primera calidad para asegurar su excelencia. Ya sea que estés buscando construir tu nueva casa, renovar un espacio o realizar mejoras, estamos aquí para hacerlo realidad de manera profesional y confiable.
+    Realizamos trabajos desde Valparaiso hasta O'Higgins, comprometidos a ofrecer resultados excepcionales en cada proyecto, utilizando materiales de primera calidad y técnicas de construcción acordes a cada proyecto. Ya sea que estés buscando construir una nueva casa, renovar tu espacio existente o realizar mejoras específicas, estamos aquí para hacerlo realidad de manera profesional y confiable.
     </p>
     <a href="{% url 'servicios' %}" class="btn btn-outline-dark fw-semibold">Ir a ver los trabajos</a>
 </div>
@@ -95,7 +94,7 @@
     </div>
     <div class="col-md-7">
     <div class="card-body">
-        <h5 class="card-title fw-bold">Obras Menores</h5>
+        <h5 class="card-title fw-bold">Construcción</h5>
     </div>
     </div>
 </div>
@@ -164,15 +163,18 @@
     
 </div>
 
-<div class="row row-cols-sm-1 row-cols-md-2 row-gap-5 mx-auto  redesociales">
+
+<div class="row redesociales">
 
     <div>
-        <a href="#"><img id="iconoredes" src="{% static 'imagenes/whatsapp.png' %}" alt="whatsapp"></a>
+        <a href="{% url 'home' %}"><img id="iconoredes" src="{% static 'imagenes/Blanco_Negro_Full.png' %}" alt=""></a>
         <a href="https://www.facebook.com/profile.php?id=61556399802249" target="_blank" ><img id="iconoredes" src="{% static 'imagenes/facebook.png' %}" alt="facebook"></a>
         <a href="https://www.instagram.com/construccionesgenerales.jyc/" target="_blank"><img id="iconoredes" src="{% static 'imagenes/instagram.png' %}" alt="instagram"></a>
         <a href="https://www.tiktok.com/@construcciongeneraljyc" target="_blank"><img id="iconoredes" src="{% static 'imagenes/tiktok.png' %}" alt="tiktok"></a>
     </div>
+    
 </div>
+
 </div>
 
 {% endblock %}
