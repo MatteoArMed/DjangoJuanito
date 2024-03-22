@@ -4,4 +4,22 @@
 
 {% block contenido %}  
 
+<div class="container">
+    {% for contacto in contactos %}
+    <div class="row text-start fw-semibold" >
+        <div class="card mb-4 shadow-lg border border-0 Textoderecho">
+            <div class="card-body">
+                <img src="{% static 'imagenes/Color_Full.png' %}" alt="Logocolor" class="img-fluid Logocolor">
+                <p>Correo: {{contacto.correo_contacto}}</p>
+                <h5 class="card-title fw-bold">Tipo de Trabajo: {{contacto.tipo_trabajo}} </h5>
+                <p class="card-text text-start fw-semibold">Descripción: 
+                <br>
+                {{contacto.descripcion_trabajo}}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}

@@ -47,4 +47,9 @@ def quienesomos(request):
 #     else:
         
 def addservicio(request):
-    return render(request,'addservicios.html')
+    contactos = Contacto.objects.all() #Traemos todos los mensajes de contacto
+
+    context = {
+        'contactos': contactos
+    }
+    return render(request,'addservicios.html',context)
