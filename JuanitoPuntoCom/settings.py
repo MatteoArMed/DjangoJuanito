@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure--0j=_nr_1ebkca=h60xgz#6j%+^%2_oo()-rnos6nz0d3-n%0t
 DEBUG = True
 
 # ALLOWED_HOSTS = ['juanitopuntocom.sa-east-1.elasticbeanstalk.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
