@@ -8,7 +8,7 @@ def home(request):
 
 def contacto(request):
     if request.method != "POST":
-        context = {'mensaje': 'no es POST'}
+        context = {'mensaje': '¿Que quieres hacer?'}
         return render(request,'contacto.html',context)
     else:
         email = request.POST["email"]
@@ -20,7 +20,7 @@ def contacto(request):
             tipo_trabajo = tipoTrabajo,
             descripcion_trabajo = descripcion)
         print('Datos guardados')
-        context = {'mensaje':'Formulario enviado'}
+        context = {'mensaje':'Formulario enviado, pronto nos pondremos en contacto contigo.'}
         return render(request, 'contacto.html',context)
 
 

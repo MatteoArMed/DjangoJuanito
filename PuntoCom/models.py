@@ -1,8 +1,4 @@
 from django.db import models
-from django.db.models.functions import Now
-# from django.utils import timezone
-
-# Create your models here.
 
 class Blog(models.Model):
     texto_descripcion = models.CharField(max_length=200)
@@ -34,10 +30,7 @@ class Servicios(models.Model):
     sub_titulo = models.CharField(max_length=255,blank=False,null=False)
     descripcion = models.TextField(max_length=1000,blank=False,null=False)
     precio = models.IntegerField(max_length=11,blank=False,null=False)
+    imagen_trabajo = models.ImageField(upload_to="fotoservicios")
     def __str__(self):
-<<<<<<< HEAD
         return self.nombre_trabajo
     
-=======
-        return self.nombre_trabajo
->>>>>>> main
