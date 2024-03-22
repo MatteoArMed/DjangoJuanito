@@ -35,5 +35,9 @@ class Servicios(models.Model):
     descripcion = models.TextField(max_length=1000,blank=False,null=False)
     precio = models.IntegerField(max_length=11,blank=False,null=False)
     def __str__(self):
+<<<<<<< HEAD
         return self.nombre_trabajo
     
+=======
+        return self.nombre_trabajo
+>>>>>>> main
