@@ -29,8 +29,8 @@ class Servicios(models.Model):
     nombre_trabajo = models.CharField(max_length=255,blank=False,null=False)
     sub_titulo = models.CharField(max_length=255,blank=False,null=False)
     descripcion = models.TextField(max_length=1000,blank=False,null=False)
-    precio = models.IntegerField(max_length=11,blank=False,null=False)
-    imagen_trabajo = models.ImageField(upload_to="fotoservicios")
+    precio = models.IntegerField(blank=False,null=False)
+    imagen_trabajo = models.ImageField(upload_to="fotoservicios",null=True)
     def __str__(self):
         return self.nombre_trabajo
     

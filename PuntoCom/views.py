@@ -39,3 +39,12 @@ def obrasmenores(request):
 
 def quienesomos(request):
     return render(request, 'quienesomos.html')
+
+# def agregarservicio(request):
+#     if request.method != "POST":
+#         context = {'mensaje':'Aqui debes subir una imagen referencial'}
+#         return (request,'addservicios.html')
+#     else:
+        
+def addservicio(request):
+    return render(request,'addservicios.html')
