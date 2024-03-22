@@ -98,24 +98,6 @@ DATABASES = {
 }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# DATABASES = {
-#     'default':{
-#         'ENGINE':'django.db.backends.mysql',
-#         'NAME': 'DjangoDB',
-#         'USER': 'admin',
-#         'PASSWORD': 'djangojuanito',
-#         'HOST':'djangodb.clk0as8gszng.sa-east-1.rds.amazonaws.com',
-#         'PORT': '3307',
-#     }
-# }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
