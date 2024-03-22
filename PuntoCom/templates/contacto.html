@@ -12,7 +12,7 @@
 <div class="col-sm-12 col-md-12 col-lg-8">
 
 
-<div class="col-sm-12 col-md-9 mb-4 mx-auto  Textoderecho">
+<div class="col-sm-12 col-md-9 mb-4 mt-2 mx-auto  Textoderecho">
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -37,11 +37,12 @@
 </div> 
 
 <div class="card mb-4 shadow-lg border border-0 Textoderecho">
-    <div class="row g-0">
+  <div class="row g-0">
     <div class="col-md-12">  
-    <div class="card-body">
-        <h5 class="card-title">Trabajos</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="card-body">
+        <img src="{% static 'imagenes/Color_Full.png' %}" alt="Logocolor" class="img-fluid Logocolor">
+        <!-- <h5 class="card-title fw-bold">Contáctanos </h5> -->
+        <p class="card-text text-start fw-semibold">Contáctanos hoy mismo para obtener una consulta gratuita y descubre cómo podemos transformar tus ideas en realidad con nuestra experiencia en construcción. Tu satisfacción está garantizada con nosotros. ¡No esperes más para darle vida a tus proyectos!</p>
     </div>
     </div>
 </div>
@@ -50,27 +51,29 @@
 </div>
 
 <div class="col-sm-12 col-md-9 col-lg-4 shadow-lg border border-0 form-container">
-<h2>Contáctanos</h2>
-<form action="" method="post">
+<h2 class="fw-bold">Contáctanos</h2>
+<form action="" method="POST">
     {% csrf_token %}
 <div class="form-group">
-    <label class="form-label" for="nombre" >Correo:</label>
-    <input class="form-control" type="email" id="nombre" name="nombre" required placeholder="@JuanitoPuntocom">
+    <label class="form-label fw-semibold" for="nombre" id="correoelectronico" >Correo:</label>
+    <input class="form-control" type="email"  name="email" placeholder="contacto@construccionesjyc.com" id="email">
 </div>
 <div class="form-group">
-    <label class="form-label" for="tipo_trabajo">Tipo de trabajo:</label>
-    <select class="form-control" id="tipo_trabajo" name="tipo_trabajo">
-        <option value="otras" selected>Otros</option>
-        <option value="obrasmenores">Obras Menores</option>
-        <option value="gasfiteria">Gasfiteria</option>
-        <option value="fozas">Instalación de foza</option>
+    <label class="form-label fw-semibold" for="tipotrabajo">Tipo de trabajo:</label>
+    <select class="form-control" id="tipotrabajo" name="tipotrabajo">
+        <option value="otras" id="Otros" selected>Otros</option>
+        <option value="obrasmenores" id="construccion">Construcción</option>
+        <option value="gasfiteria" id="gasfiteria">Gasfiteria</option>
+        <option value="fosas" id="fosas">Instalación de fosas</option>
     </select>
 </div>
 <div class="form-group">
-    <label class="form-label" for="descripcion">Descripción:</label>
-    <textarea class="form-control" id="descripcion" name="descripcion" rows="13"></textarea>
+    <label class="form-label fw-semibold" for="descripcion">Descripción:</label>
+    <textarea class="form-control" value="descripcion" id="descripcion" name="descripcion" rows="13"></textarea>
 </div>
 <button class="btn btn-outline-dark" type="submit">Enviar</button>
+<br>
+{{mensaje}}
 </form>
 
 

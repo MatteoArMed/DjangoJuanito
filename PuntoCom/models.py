@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.db.models.functions import Now
 # from django.utils import timezone
 
 # Create your models here.
@@ -21,3 +21,10 @@ class Trabajos(models.Model):
         return self.lugar_trabajo
     
 
+class Contacto(models.Model):
+    correo_contacto = models.EmailField(max_length=100,blank=False,null=False)
+    tipo_trabajo = models.CharField(max_length=100)
+    descripcion_trabajo = models.TextField(blank=True)
+    fecha_contacto = models.DateTimeField(default=Now)
+    def __str__(self):
+        return self.correo_contacto

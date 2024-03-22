@@ -1,0 +1,36 @@
+version: "3.5"
+
+services:
+  basededatos:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      # - "POSTGRES_HOST_AUTH_METHOD=trust"
+      # Aqui podemos definir los datos con los que nos conectaremos a la BD.
+      - DATADABE_HOST=127.0.0.1
+      - POSTGRES_USER=matteo
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=matteodb
+      # Volumes nos permite agregar archivos y carpetas a nuestro contenedor una vez esta activo
+    # volumes:
+    #   - ./django_project:/docker-entrypoint-initdb.d/
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+        PGADMIN_DEFAULT_EMAIL: "matteo@matteo.cl"
+        PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "80:80"
+    depends_on:
+       - basededatos
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - basededatos

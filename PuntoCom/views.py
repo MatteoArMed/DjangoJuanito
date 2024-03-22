@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect 
-
+from .models import Contacto
 
 # Create your views here.
 from django.http import HttpResponse
@@ -13,7 +13,23 @@ def home(request):
 #     return render(request, 'home.html')
 
 def contacto(request):
-    return render(request,'contacto.html')
+    if request.method != "POST":
+        context = {'mensaje': 'no es POST'}
+        return render(request,'contacto.html',context)
+    else:
+        email = request.POST["email"]
+        tipoTrabajo = request.POST["tipotrabajo"]
+        descripcion = request.POST["descripcion"]
+
+        obj = Contacto.objects.create(
+            correo_contacto = email,
+            tipo_trabajo = tipoTrabajo,
+            descripcion_trabajo = descripcion)
+        print('Datos guardados')
+        context = {'mensaje':'Formulario enviado'}
+        return render(request, 'contacto.html',context)
+
+
 
 def servicios(request):
     return render(request,'servicios.html')
@@ -21,8 +37,8 @@ def servicios(request):
 def gasfiteria(request):
     return render(request, 'gasfiteria.html')
 
-def fozaseptica(request):
-    return render(request, 'fozaseptica.html')
+def fosaseptica(request):
+    return render(request, 'fosaseptica.html')
 
 def obrasmenores(request):
     return render(request, 'obrasmenores.html')
