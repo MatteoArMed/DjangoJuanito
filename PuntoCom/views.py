@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Contacto
+from .models import Contacto, Servicios
 
 
 def home(request):
@@ -48,8 +48,9 @@ def quienesomos(request):
         
 def addservicio(request):
     contactos = Contacto.objects.all() #Traemos todos los mensajes de contacto
-
+    servicios = Servicios.objects.all() #Traemos todos los servicios disponibles
     context = {
-        'contactos': contactos
+        'contactos': contactos,
+        'servicios': servicios
     }
     return render(request,'addservicios.html',context)

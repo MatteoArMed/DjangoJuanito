@@ -4,6 +4,94 @@
 
 {% block contenido %}  
 
+
+<div class="Servicios col-12">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="btn btn-outline-dark active" id="correos-tab" data-bs-toggle="tab" data-bs-target="#correos-tab-pane" type="button" role="tab" aria-controls="correos-tab-pane" aria-selected="true">Correos</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="btn btn-outline-dark" id="servicios-tab" data-bs-toggle="tab" data-bs-target="#servicios-tab-pane" type="button" role="tab" aria-controls="servicios-tab-pane" aria-selected="false">Servicios</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="btn btn-outline-dark" id="otros-tab" data-bs-toggle="tab" data-bs-target="#otros-tab-pane" type="button" role="tab" aria-controls="otros-tab-pane" aria-selected="false">Otros</button>
+    </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+    
+    <div class="tab-pane fade show active" id="correos-tab-pane" role="tabpanel" aria-labelledby="correos-tab" tabindex="0">
+    <div class="row">
+        {% for contacto in contactos %}
+    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
+        <!-- <img src="{% static 'imagenes/calefont.png' %}" alt="imagenprueba" class="img-fluid rounded mx-auto d-block calefont" > -->
+        <h2 class="text-center">Correo: {{contacto.correo_contacto}}</h4>
+        <h4 class="text-center text-sm-center text-lg-start"><strong>Tipo de Trabajo: {{contacto.tipo_trabajo}} </strong></h1>
+        <!-- <h6 class="text-center text-sm-center text-lg-start">Precio solo contempla visita y presupuesto de trabajo</h6> -->
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 cajaDerecha text-center text-sm-center text-lg-start">
+    <span>
+        <strong>Descripción: 
+            <br>
+            {{contacto.descripcion_trabajo}} 
+        </strong>
+    </span>
+    </div>
+    {% endfor %}
+    </div>
+    
+    </div>
+    
+    <div class="tab-pane fade" id="servicios-tab-pane" role="tabpanel" aria-labelledby="servicios-tab" tabindex="0">
+    <div class="row">
+        {% for servicio in servicios %}
+    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
+        <!-- <img src="{% static 'imagenes/fozasepticaweb.png' %}" alt="servicios" class="img-fluid rounded mx-auto d-block servicios" > -->
+        <h5 class="text-center">{{servicio.nombre_trabajo}}</h5>
+        <h1 class="text-center text-sm-center text-lg-start"><strong>Precio:${{servicio.precio}}</strong></h1>
+        <h6 class="text-center text-sm-center text-lg-start">{{servicio.sub_titulo}}</h6>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center cajaDerecha">
+    <span>
+        <strong>
+        {{servicio.descripcion}}
+        </strong>
+    </span>
+    </div>
+        {% endfor %}
+    </div>
+    </div>
+    
+    <div class="tab-pane fade" id="otros-tab-pane" role="tabpanel" aria-labelledby="otros-tab" tabindex="0">
+    <div class="row">
+    
+    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7 cajaIzquierda">
+        <img src="{% static 'imagenes/casaconstruccioncorta.png' %}" alt="CasaConstruccion" class="img-fluid rounded mx-auto d-block  ConstruccionCasa" >
+        <h5 class="text-center"> Instalación y construcción de obras menores</h5>
+        <h1 class="text-center text-sm-center text-lg-start"><strong>Precio: $39.990</strong></h1>
+        <h6 class="text-center text-sm-center text-lg-start">Precio solo contempla visita y presupuesto de trabajo</h6>        
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 cajaDerecha">
+    <span>
+        <strong >Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló 
+        </strong>
+    </span>
+    </div> 
+    
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    </div>
+    
+
+
+{% endblock %}
+
+
+
 <div class="container">
     {% for contacto in contactos %}
     <div class="row text-start fw-semibold" >
@@ -22,4 +110,3 @@
     {% endfor %}
 </div>
 
-{% endblock %}
