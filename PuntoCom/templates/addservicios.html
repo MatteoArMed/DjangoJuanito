@@ -46,7 +46,7 @@
     <div class="row">
         {% for servicio in servicios %}
     <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
-        <!-- <img src="{% static 'imagenes/fozasepticaweb.png' %}" alt="servicios" class="img-fluid rounded mx-auto d-block servicios" > -->
+        <img src="{{ servicio.imagen_trabajo }}" alt="servicios" class="img-fluid rounded mx-auto d-block servicios" >
         <h5 class="text-center">{{servicio.nombre_trabajo}}</h5>
         <h1 class="text-center text-sm-center text-lg-start"><strong>Precio:${{servicio.precio}}</strong></h1>
         <h6 class="text-center text-sm-center text-lg-start">{{servicio.sub_titulo}}</h6>
@@ -63,9 +63,53 @@
     </div>
     
     <div class="tab-pane fade" id="otros-tab-pane" role="tabpanel" aria-labelledby="otros-tab" tabindex="0">
+
     <div class="row">
-    
-    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7 cajaIzquierda">
+
+    <div class="card-body">
+        <form action="addservicio" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Ingresa el trabajo</h2>
+        <div class="form-group row">
+            <label for="nombreServicio" class="col-12 col-sm-4 col-form-label">Nombre servicio:</label>
+            <div class="col-12 col-sm-8">
+            <textarea type="text" id="nombreServicio" name="nombreServicio" class="form-control" rows="5">
+            </textarea>
+            </div>
+            <label for="subTitulo" class="col-12 col-sm-4 col-form-label">Subtitulo:</label>
+            <div class="col-12 col-sm-8">
+            <textarea type="text" id="subTitulo" name="subTitulo" class="form-control" rows="5">
+            </textarea>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="descripcionServicio" class="col-12 col-sm-4 col-form-label">Descripcion Servicio:</label>
+            <div class="col-12 col-sm-8">
+            <textarea type="text" id="descripcionServicio" name="descripcionServicio" class="form-control" rows="3"></textarea>
+            </div>
+            <label for="precioServicio" class="col-12 col-sm-4 col-form-label">Precio:</label>
+            <div class="col-12 col-sm-8">
+            <textarea type="text" id="precioServicio" name="precioServicio" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-12 col-sm-4 col-form-label">Imagen del trabajo:</label>
+            <div class="col-12 col-sm-8">
+            <div class="input-group">
+                <input type="file" id="fotosServicio" name="fotosServicio" accept="image/*" class="form-control">
+            </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <br>
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </div>
+        </form>
+    </div>
+
+    <!-- <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7 cajaIzquierda">
         <img src="{% static 'imagenes/casaconstruccioncorta.png' %}" alt="CasaConstruccion" class="img-fluid rounded mx-auto d-block  ConstruccionCasa" >
         <h5 class="text-center"> Instalación y construcción de obras menores</h5>
         <h1 class="text-center text-sm-center text-lg-start"><strong>Precio: $39.990</strong></h1>
@@ -76,7 +120,7 @@
         <strong >Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló 
         </strong>
     </span>
-    </div> 
+    </div>  -->
     
     </div>
     

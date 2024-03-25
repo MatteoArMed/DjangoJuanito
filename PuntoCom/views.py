@@ -53,4 +53,31 @@ def addservicio(request):
         'contactos': contactos,
         'servicios': servicios
     }
-    return render(request,'addservicios.html',context)
+    if request.method != "POST":
+        return render(request,'addservicios.html')
+        
+    else:
+        nombreServicio = request.POST["nombreServicio"]
+        subTitulo = request.POST["subTitulo"]
+        descripcionServicio = request.POST["descripcionServicio"]
+        precioServicio = request.POST["precioServicio"]
+        imagen = request.FILES["fotosServicio"]
+        
+        def get_next_id():
+            last_service = Servicios.objects.order_by('-id').first()
+            if last_service:
+                return last_service.id + 1
+            else:
+                return 1
+
+        obj = Servicios.objects.create(
+            id = get_next_id(),
+            nombre_trabajo = nombreServicio,
+            sub_titulo = subTitulo,
+            descripcion = descripcionServicio,
+            precio = precioServicio,
+            imagen_trabajo = imagen
+        )
+        obj.save()
+        print('Datos guardados')
+        return render(request,'addservicios.html',context)
