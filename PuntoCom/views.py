@@ -1,10 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .models import Contacto, Servicios
 
-
 def home(request):
     return render(request, 'home.html')
-
 
 def contacto(request):
     if request.method != "POST":
@@ -23,8 +22,6 @@ def contacto(request):
         context = {'mensaje':'Formulario enviado, pronto nos pondremos en contacto contigo.'}
         return render(request, 'contacto.html',context)
 
-
-
 def servicios(request):
     return render(request,'servicios.html')
 
@@ -40,12 +37,6 @@ def obrasmenores(request):
 def quienesomos(request):
     return render(request, 'quienesomos.html')
 
-# def agregarservicio(request):
-#     if request.method != "POST":
-#         context = {'mensaje':'Aqui debes subir una imagen referencial'}
-#         return (request,'addservicios.html')
-#     else:
-        
 def addservicio(request):
     contactos = Contacto.objects.all() #Traemos todos los mensajes de contacto
     servicios = Servicios.objects.all() #Traemos todos los servicios disponibles
@@ -54,7 +45,7 @@ def addservicio(request):
         'servicios': servicios
     }
     if request.method != "POST":
-        return render(request,'addservicios.html')
+        return render(request,'addservicios.html',context)
         
     else:
         nombreServicio = request.POST["nombreServicio"]
@@ -63,21 +54,21 @@ def addservicio(request):
         precioServicio = request.POST["precioServicio"]
         imagen = request.FILES["fotosServicio"]
         
-        def get_next_id():
-            last_service = Servicios.objects.order_by('-id').first()
-            if last_service:
-                return last_service.id + 1
+        def siguienteID():
+            ultimoServicio = Servicios.objects.order_by('-id').first()
+            if ultimoServicio:
+                return ultimoServicio.id + 1
             else:
                 return 1
 
         obj = Servicios.objects.create(
-            id = get_next_id(),
+            id = siguienteID(),
             nombre_trabajo = nombreServicio,
             sub_titulo = subTitulo,
             descripcion = descripcionServicio,
             precio = precioServicio,
             imagen_trabajo = imagen
         )
-        obj.save()
         print('Datos guardados')
         return render(request,'addservicios.html',context)
+
