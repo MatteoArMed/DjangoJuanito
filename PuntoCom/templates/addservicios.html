@@ -23,7 +23,8 @@
         {% for contacto in contactos %}
     <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
         <!-- <img src="{% static 'imagenes/calefont.png' %}" alt="imagenprueba" class="img-fluid rounded mx-auto d-block calefont" > -->
-        <h2 class="text-center">Correo: {{contacto.correo_contacto}}</h4>
+        <h3 class="text-center">Correo: {{contacto.correo_contacto}}</h3>
+        <h3 class="text-center">Correo: {{contacto.fecha_contacto}}</h3>
         <h4 class="text-center text-sm-center text-lg-start"><strong>Tipo de Trabajo: {{contacto.tipo_trabajo}} </strong></h1>
         <!-- <h6 class="text-center text-sm-center text-lg-start">Precio solo contempla visita y presupuesto de trabajo</h6> -->
     </div>
@@ -90,13 +91,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro que quieres eliminar este servicio?</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">¿Estas seguro que quieres eliminar este servicio?</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-                <br><br>
-                <div class="alert alert-danger" role="alert">
-                    ¿Estas seguro que quieres eliminar este servicio?
+                <div class="alert alert-danger" role="alert">El servicio se eliminará para siempre
                 </div>    
                 <p>
                     <a href="{% url 'eliminarServicio' pk=servicio.id %}" class="btn btn-danger">Eliminar</a>
