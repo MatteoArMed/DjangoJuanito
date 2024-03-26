@@ -1,12 +1,10 @@
 {% extends './base.html' %}
-
 {% load static %} 
 
 {% block contenido %}  
 
 
 <div class="Servicios col-12">
-
     <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="btn btn-outline-dark active" id="correos-tab" data-bs-toggle="tab" data-bs-target="#correos-tab-pane" type="button" role="tab" aria-controls="correos-tab-pane" aria-selected="true">Correos</button>
@@ -41,14 +39,39 @@
     </div>
     
     </div>
-    
+
     <div class="tab-pane fade" id="servicios-tab-pane" role="tabpanel" aria-labelledby="servicios-tab" tabindex="0">
     <div class="row">
         {% for servicio in servicios %}
     <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
         <img src="{{ servicio.imagen_trabajo }}" alt="servicios" class="img-fluid rounded mx-auto d-block servicios" >
         <h5 class="text-center">{{servicio.nombre_trabajo}}</h5>
-        <h1 class="text-center text-sm-center text-lg-start"><strong>Precio:${{servicio.precio}}</strong></h1>
+        {% load humanize %}
+        <h1 class="text-center text-sm-center 
+        text-lg-start"><strong>
+             <script>
+                // Función para formatear el número en formato CLP sin los últimos dos dígitos y con símbolo $
+                function formatNumberCLP(num) {
+                    num = num.toFixed(2);
+                    numSplit = num.split('.');
+                    int = numSplit[0];
+                    dec = numSplit[1].slice(0, -2); // Eliminar los últimos dos dígitos decimales
+            
+                    int = int.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    return "$" + int + (dec ? ',' + dec : ''); // Agregar el símbolo $ y decimales solo si existen
+                }
+                
+                // Obtener el número sin formato
+                var originalNumber = {{ servicio.precio }};
+                
+                // Formatear el número usando JavaScript
+                var formattedNumberCLP = formatNumberCLP(originalNumber);
+                
+                // Mostrar el número formateado
+                document.write(formattedNumberCLP);
+            </script>
+
+        </strong></h1>
         <h6 class="text-center text-sm-center text-lg-start">{{servicio.sub_titulo}}</h6>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center cajaDerecha">

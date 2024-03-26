@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.template import TemplateSyntaxError
 from .models import Contacto, Servicios
 
 def home(request):
@@ -69,6 +70,51 @@ def addservicio(request):
             precio = precioServicio,
             imagen_trabajo = imagen
         )
+        obj.save()
         print('Datos guardados')
+        return render(request,'mensajes.html',context)
+    
+
+
+def eliminarServicio(request,pk):
+    context = {}
+    try:
+        servicios = Servicios.objects.get(id=pk)
+        servicios.delete()
+        print("Servicio eliminado")
+        servicio = Servicios.objects.all()
+        context = {'mensaje':'Servicio eliminado','servicios':servicio}
+        return render(request,'mensajes.html',context)
+    except:
+        servicios = Servicios.objects.all()
+        context = {'mensaje':'Servicio no existe','servicios':servicios}
         return render(request,'addservicios.html',context)
 
+def mensajeRespuesta(request):
+    if request.method != 'POST':
+        context = {'mensaje':'Esto es un mensaje'}
+        return render(request,'mensajeRespuesta',context)
+
+def format_precio(precio):
+    try:
+        precio_sin_decimales = int(precio / 100)
+        precio_formateado = f"{precio_sin_decimales:.0f}"  # Eliminar decimales y usar punto
+        return f"${precio_formateado}"  # Agregar símbolo de pesos
+    except ValueError:
+        raise TemplateSyntaxError("Precio no es un número válido")
+    
+# @login_required
+# def eliminarTrabajo(request,pk):
+#     context = {}
+#     try:
+#         trabajo = Atencion.objects.get(id=pk)
+
+#         trabajo.delete()
+#         print('Trabajo Eliminado')
+#         trabajos =  Atencion.objects.all()
+#         context ={'mensaje':'Trabajo Eliminado', 'trabajos':trabajos}
+#         return render(request,'mecanico/datosContacto.html',context)
+#     except:
+#         trabajos =  Atencion.objects.all()
+#         context={'mensaje':'El trabajo no existe','trabajos':trabajos}
+#         return render(request,'mecanico/administrarTrabajos.html',context)
