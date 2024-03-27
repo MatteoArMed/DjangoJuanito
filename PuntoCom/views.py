@@ -21,7 +21,7 @@ def contacto(request):
             descripcion_trabajo = descripcion)
         print('Datos guardados')
         context = {'mensaje':'Formulario enviado, pronto nos pondremos en contacto contigo.'}
-        return render(request, 'contacto.html',context)
+        return render(request, 'mensajecomun.html',context)
 
 def servicios(request):
     return render(request,'servicios.html')
@@ -41,9 +41,15 @@ def quienesomos(request):
 def addservicio(request):
     contactos = Contacto.objects.all() #Traemos todos los mensajes de contacto
     servicios = Servicios.objects.all() #Traemos todos los servicios disponibles
+    correoleidos = Contacto.objects.filter(estado_correo=True) #Traemos los coreros leidos
+    correonoleidos = Contacto.objects.filter(estado_correo=False) #Traemos los coreros no leidos
+
+
     context = {
         'contactos': contactos,
-        'servicios': servicios
+        'servicios': servicios,
+        'correoleido': correoleidos,
+        'correonoleido': correonoleidos,
     }
     if request.method != "POST":
         return render(request,'addservicios.html',context)
@@ -72,6 +78,9 @@ def addservicio(request):
         )
         obj.save()
         print('Datos guardados')
+        context = {
+            'mensaje':'Servicio creado'
+        }
         return render(request,'mensajes.html',context)
     
 
@@ -95,13 +104,11 @@ def mensajeRespuesta(request):
         context = {'mensaje':'Esto es un mensaje'}
         return render(request,'mensajeRespuesta',context)
 
-def format_precio(precio):
-    try:
-        precio_sin_decimales = int(precio / 100)
-        precio_formateado = f"{precio_sin_decimales:.0f}"  # Eliminar decimales y usar punto
-        return f"${precio_formateado}"  # Agregar símbolo de pesos
-    except ValueError:
-        raise TemplateSyntaxError("Precio no es un número válido")
+def mensajeRespuestaComun(request):
+    if request.method != 'POST':
+        context = {'mensaje':'Esto es un mensaje'}
+        return render(request,'mensajeRespuestaComun',context)
+
     
 # @login_required
 # def eliminarTrabajo(request,pk):

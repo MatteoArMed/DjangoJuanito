@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-
 INSTALLED_APPS = [
     'PuntoCom.apps.PuntocomConfig',
     'django.contrib.admin',
@@ -72,7 +71,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 # AWS_ACCESS_KEY_ID = 'AKIA2VWFHJZ6N5MTUUQK'
 # AWS_SECRET_ACCESS_KEY = '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'

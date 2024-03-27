@@ -5,9 +5,6 @@ class Blog(models.Model):
     fecha_publicacion = models.DateTimeField("Fecha Publicación")
     def __str__(self):
         return self.texto_descripcion
-    # def publicacion_hecho_reciente(self):
-    #     return self.fecha_publicacion >= timezone.now() - datetime.timedelta(days=1)
-
 
 class Trabajos(models.Model):
     lugar_trabajo = models.CharField(max_length=200)
@@ -22,6 +19,7 @@ class Contacto(models.Model):
     tipo_trabajo = models.CharField(max_length=100)
     descripcion_trabajo = models.TextField(blank=True)
     fecha_contacto = models.DateField(auto_now_add=True)
+    estado_correo = models.BooleanField(default=False)
     def __str__(self):
         return self.correo_contacto
     
