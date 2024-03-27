@@ -39,8 +39,8 @@
                 {{correosnoleidos.descripcion_trabajo}} 
             </strong>
         </span>
-        <a href="{% url 'cambioEstadoCorreo' pk=correosnoleidos.pk %}" style="text-decoration: none;">
-            <form action="{% url 'cambioEstadoCorreo' correosnoleidos.pk %}" method="POST">
+        <a href="{% url 'correoLeido' pk=correosnoleidos.pk %}" style="text-decoration: none;">
+            <form action="{% url 'correoLeido' correosnoleidos.pk %}" method="POST">
                 {% csrf_token %}
                 <input type="checkbox" value="True" name="cambioEstado" id="cambioEstado">
                 <input type="submit" value="Enviar" class="btn btn-primary">
@@ -72,6 +72,14 @@
             {{correosleidos.descripcion_trabajo}} 
         </strong>
     </span>
+    <a href="{% url 'correoNoLeido' pk=correosleidos.pk %}" style="text-decoration: none;">
+        <form action="{% url 'correoNoLeido' correosleidos.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="checkbox" value="False" name="correoNoLeido" id="correoNoLeido">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </form>
+    </a>
+
     </div>
     {% endfor %}
     </div>

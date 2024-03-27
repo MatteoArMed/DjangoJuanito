@@ -110,7 +110,7 @@ def mensajeRespuestaComun(request):
         return render(request,'mensajeRespuestaComun',context)
 
 
-def cambioEstadoCorreo(request, pk):
+def correoLeido(request, pk):
     if pk != "":
         correosnoleidos = Contacto.objects.get(id=pk)
         context = {'mensaje': ''}
@@ -127,7 +127,22 @@ def cambioEstadoCorreo(request, pk):
             context = {'mensaje': 'Correo leido'}
             print('Se cambia el estado del correo')
             return render(request, 'mensajes.html',context)
-        
+
+def correoNoLeido(request, pk):
+    if pk != "":
+        correoleido = Contacto.objects.get(id=pk)
+        context = {'mensaje': ''}
+
+        if request.method != "POST":
+            context = {'mensaje':'No es metodo POST'}
+            return render(request,'mensajes.html',context)
+        else:
+            cambioestado = request.POST["correoNoLeido"]
+            correoleido.estado_correo = cambioestado
+            correoleido.save()
+
+            context = {'mensaje':'Se cambia a correo no leido'}
+            return render(request,'mensajes.html',context)
 
 
 # @login_required

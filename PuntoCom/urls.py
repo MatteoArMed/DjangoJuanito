@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import home, contacto, servicios, gasfiteria, fosaseptica, obrasmenores, quienesomos, addservicio,eliminarServicio,mensajeRespuesta,mensajeRespuestaComun,cambioEstadoCorreo
+from .views import home, contacto, servicios, gasfiteria, fosaseptica, obrasmenores, quienesomos, addservicio,eliminarServicio,mensajeRespuesta,mensajeRespuestaComun,correoLeido,correoNoLeido
 
 
 
@@ -16,6 +16,8 @@ urlpatterns = [
     path('eliminarServicio/<str:pk>/',eliminarServicio, name='eliminarServicio'),
     path('mensajeRespuesta',mensajeRespuesta,name='mensaje'),
     path('mensajeRespuestaComun',mensajeRespuestaComun,name='mensajeComun'),
-    path('cambioEstadoCorreo/<int:pk>/',cambioEstadoCorreo,name='cambioEstadoCorreo')
+    path('correoLeido/<int:pk>/',correoLeido,name='correoLeido'),
+    path('correoNoLeido/<int:pk>/',correoNoLeido,name='correoNoLeido'),
+
 ]
 
