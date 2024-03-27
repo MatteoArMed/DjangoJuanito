@@ -41,15 +41,15 @@ def quienesomos(request):
 def addservicio(request):
     contactos = Contacto.objects.all() #Traemos todos los mensajes de contacto
     servicios = Servicios.objects.all() #Traemos todos los servicios disponibles
-    correoleidos = Contacto.objects.filter(estado_correo=True) #Traemos los coreros leidos
-    correonoleidos = Contacto.objects.filter(estado_correo=False) #Traemos los coreros no leidos
+    correosleidos = Contacto.objects.filter(estado_correo=True) #Traemos los coreros leidos
+    correosnoleidos = Contacto.objects.filter(estado_correo=False) #Traemos los coreros no leidos
 
 
     context = {
         'contactos': contactos,
         'servicios': servicios,
-        'correoleido': correoleidos,
-        'correonoleido': correonoleidos,
+        'correoleido': correosleidos,
+        'correonoleido': correosnoleidos,
     }
     if request.method != "POST":
         return render(request,'addservicios.html',context)
@@ -109,7 +109,27 @@ def mensajeRespuestaComun(request):
         context = {'mensaje':'Esto es un mensaje'}
         return render(request,'mensajeRespuestaComun',context)
 
-    
+
+def cambioEstadoCorreo(request, pk):
+    if pk != "":
+        correosnoleidos = Contacto.objects.get(id=pk)
+        context = {'mensaje': ''}
+
+        if request.method != "POST":
+            context = {'mensaje': 'Cargando pagina'}
+            print('No es metodo POST')
+            return render(request,'mensajes.html',context)
+        else:
+            cambioestado = request.POST["cambioEstado"]
+            correosnoleidos.estado_correo = cambioestado
+            correosnoleidos.save()
+
+            context = {'mensaje': 'Correo leido'}
+            print('Se cambia el estado del correo')
+            return render(request, 'mensajes.html',context)
+        
+
+
 # @login_required
 # def eliminarTrabajo(request,pk):
 #     context = {}

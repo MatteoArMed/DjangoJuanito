@@ -29,16 +29,26 @@
         <!-- <img src="{% static 'imagenes/calefont.png' %}" alt="imagenprueba" class="img-fluid rounded mx-auto d-block calefont" > -->
         <h3 class="text-center">Correo: {{correosnoleidos.correo_contacto}}</h3>
         <h3 class="text-center">Correo: {{correosnoleidos.fecha_contacto}}</h3>
-        <h4 class="text-center text-sm-center text-lg-start"><strong>Tipo de Trabajo: {{correosnoleidos.tipo_trabajo}} </strong></h1>
+        <h4 class="text-center text-sm-center text-lg-start"><strong>Tipo de Trabajo: {{correosnoleidos.tipo_trabajo}} </strong></h4>
         <!-- <h6 class="text-center text-sm-center text-lg-start">Precio solo contempla visita y presupuesto de trabajo</h6> -->
     </div>
     <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 cajaDerecha text-center text-sm-center text-lg-start">
-    <span>
-        <strong>Descripción: 
-            <br>
-            {{correosnoleidos.descripcion_trabajo}} 
-        </strong>
-    </span>
+        <span>
+            <strong>Descripción: 
+                <br>
+                {{correosnoleidos.descripcion_trabajo}} 
+            </strong>
+        </span>
+        <a href="{% url 'cambioEstadoCorreo' pk=correosnoleidos.pk %}" style="text-decoration: none;">
+            <form action="{% url 'cambioEstadoCorreo' correosnoleidos.pk %}" method="POST">
+                {% csrf_token %}
+                <input type="checkbox" value="True" name="cambioEstado" id="cambioEstado">
+                <input type="submit" value="Enviar" class="btn btn-primary">
+            </form>
+        </a>
+    </a>
+    
+    <!-- <a class="btn btn-outline-light btn-sm" href="{% url 'addservicio' %}" role="button"  type="submit" >Marcar como leido -->
     </div>
     {% endfor %}
     </div>
