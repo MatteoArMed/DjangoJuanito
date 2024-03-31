@@ -9,14 +9,46 @@
     
  -->
  <!DOCTYPE html>
- <html lang="es">
- <head>
-     <meta charset="UTF-8">
-     <title>Página no encontrada</title>
- </head>
- <body>
-     <h1>Página no encontrada</h1>
-     <p>Lo sentimos, la página que estás buscando no existe.</p>
-     <a href="/">Volver a la página principal</a>
- </body>
- </html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop-out en el Centro con Bootstrap</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<button onclick="mostrarPopOut()" class="btn btn-primary">Mostrar Pop-out</button>
+
+<div id="popOut" class="popOut modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pop-out en el Centro</h5>
+        <button type="button" class="close" onclick="ocultarPopOut()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Este es el contenido del pop-out.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+// Función para mostrar el pop-out
+function mostrarPopOut() {
+  $('#popOut').modal('show');
+}
+
+// Función para ocultar el pop-out
+function ocultarPopOut() {
+  $('#popOut').modal('hide');
+}
+</script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 {% extends './base.html' %}
+
 {% load static %} 
 
 {% block contenido %}  
@@ -159,28 +160,25 @@
     <div class="row">
 
     <div class="card-body">
-        <form action="addservicio" method="POST" enctype="multipart/form-data">
+        <form action="addservicio" method="POST" enctype="multipart/form-data" onsubmit="return enviarTrabajo()">
         {% csrf_token %}
         <h2>Ingresa el trabajo</h2>
         <div class="form-group row">
-            <label for="nombreServicio" class="col-12 col-sm-4 col-form-label">Nombre servicio:</label>
-            <div class="col-12 col-sm-8">
-            <textarea type="text" id="nombreServicio" name="nombreServicio" class="form-control" rows="5"></textarea>
-            </div>
-            <label for="subTitulo" class="col-12 col-sm-4 col-form-label">Subtitulo:</label>
-            <div class="col-12 col-sm-8">
-            <textarea type="text" id="subTitulo" name="subTitulo" class="form-control" rows="5"></textarea>
-            </div>
+            <label for="nombreServicio">Nombre:</label>
+            <input type="text" id="nombreServicio" name="nombreServicio" placeholder="Escribe el titulo de tu trabajo" class="form-control">
+            <label for="subTitulo">Sub Titulo:</label>
+            <input type="text" id="subTitulo" name="subTitulo" placeholder="Un subtitulo breve que explique el trabajo" class="form-control">
         </div>
         <br>
         <div class="form-group row">
-            <label for="descripcionServicio" class="col-12 col-sm-4 col-form-label">Descripcion Servicio:</label>
+            <label for="descripcionServicio" class="col-12 col-sm-4 col-form-label">Descripciòn Servicio:</label>
             <div class="col-12 col-sm-8">
-            <textarea type="text" id="descripcionServicio" name="descripcionServicio" class="form-control" rows="3"></textarea>
+            <input type="text" class="form-control" id="descripcionServicio" name="descripcionServicio" placeholder="Una descripciòn breve de lo que es el trabajo">
             </div>
             <label for="precioServicio" class="col-12 col-sm-4 col-form-label">Precio:</label>
             <div class="col-12 col-sm-8">
-            <input type="number" id="precioServicio" name="precioServicio">
+            <br>
+            <input type="number" id="precioServicio" name="precioServicio" value="0">
             </div>
         </div>
         <br>
@@ -188,29 +186,14 @@
             <label class="col-12 col-sm-4 col-form-label">Imagen del trabajo:</label>
             <div class="col-12 col-sm-8">
             <div class="input-group">
-                <input type="file" id="fotosServicio" name="fotosServicio" accept="image/*">
+                <input type="file" id="fotosServicio" name="fotosServicio" accept="image/*" required>
             </div>
             </div>
         </div>
-        <div class="text-center">
-            <br>
-            <input type="submit" value="Enviar" class="btn btn-primary">
-        </div>
+        <button class="btn btn-primary text-center" type="submit" >Enviar</button>
         </form>
-    </div>
 
-    <!-- <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7 cajaIzquierda">
-        <img src="{% static 'imagenes/casaconstruccioncorta.png' %}" alt="CasaConstruccion" class="img-fluid rounded mx-auto d-block  ConstruccionCasa" >
-        <h5 class="text-center"> Instalación y construcción de obras menores</h5>
-        <h1 class="text-center text-sm-center text-lg-start"><strong>Precio: $39.990</strong></h1>
-        <h6 class="text-center text-sm-center text-lg-start">Precio solo contempla visita y presupuesto de trabajo</h6>        
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 cajaDerecha">
-    <span>
-        <strong >Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló 
-        </strong>
-    </span>
-    </div>  -->
     
     </div>
     
@@ -220,7 +203,7 @@
     
 </div>
     
-
+<script src="{% static 'static/js/app.js' %}"></script>
 
 {% endblock %}
 

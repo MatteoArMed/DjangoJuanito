@@ -1,6 +1,6 @@
 html{
     font-family: 'Courier New', Courier, monospace;
-    color: #ffffff;
+    /* color: #ffffff; */
     
 }
 
@@ -9,7 +9,7 @@ html{
     position: absolute;
     margin-bottom: 5rem;
     font-family: 'Courier New', Courier, monospace;
-    color: #ffffff;
+    /* color: #ffffff; */
     
 }
 
@@ -24,7 +24,7 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    color: #ffffff;
+    /* color: #ffffff; */
     margin: 1%;
 
 }
