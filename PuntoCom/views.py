@@ -145,6 +145,41 @@ def correoNoLeido(request, pk):
             return render(request,'mensajes.html',context)
 
 
+def modificarServicio(request, pk):
+    if pk != "":
+        servicio = Servicios.objects.get(id=pk)
+        context = {'servicio': servicio}
+
+        if request.method != "POST":
+            return render (request,'modificarServicio.html',context)
+
+        if request.method == "POST":
+            nombreServicio = request.POST["nombreServicio"]
+            subtituloServicio = request.POST["subtitulo"]
+            descripcionServicio = request.POST["descripcionServicio"]
+            precioServicio = request.POST["precioservicio"]
+            
+            # validamos si se sube una imagen, si no se conserva la que tiene
+            if 'imagenServicio' in request.FILES:
+                imagenServicio = request.FILES["imagenServicio"]
+                servicio.imagen_trabajo = imagenServicio
+            
+            servicio.nombre_trabajo = nombreServicio
+            servicio.sub_titulo = subtituloServicio
+            servicio.descripcion = descripcionServicio
+            servicio.precio = precioServicio
+            servicio.save()
+
+            context = {'mensaje':'Servicio modificado'}
+            print('Se envian datos')
+            return render(request, 'mensajes.html',context)
+
+        else:
+            context = {'mensaje': 'Error, el servicio no existe...'}
+            return render(request,'mensajes.html',context)
+
+
+
 # @login_required
 # def eliminarTrabajo(request,pk):
 #     context = {}
