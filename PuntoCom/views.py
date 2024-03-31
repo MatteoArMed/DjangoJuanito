@@ -1,6 +1,4 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.template import TemplateSyntaxError
+from django.shortcuts import render
 from .models import Contacto, Servicios
 
 def home(request):

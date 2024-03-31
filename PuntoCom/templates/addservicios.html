@@ -14,10 +14,10 @@
         <button class="btn btn-outline-dark" id="correosleidos-tab" data-bs-toggle="tab" data-bs-target="#correosleidos-tab-pane" type="button" role="tab" aria-controls="correosleidos-tab-pane" aria-selected="true">Correos leidos</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="btn btn-outline-dark" id="servicios-tab" data-bs-toggle="tab" data-bs-target="#servicios-tab-pane" type="button" role="tab" aria-controls="servicios-tab-pane" aria-selected="false">Servicios</button>
+        <button class="btn btn-outline-dark" id="servicios-tab" data-bs-toggle="tab" data-bs-target="#servicios-tab-pane" type="button" role="tab" aria-controls="servicios-tab-pane" aria-selected="false">Trabajos</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="btn btn-outline-dark" id="otros-tab" data-bs-toggle="tab" data-bs-target="#otros-tab-pane" type="button" role="tab" aria-controls="otros-tab-pane" aria-selected="false">Agregar servicio</button>
+        <button class="btn btn-outline-dark" id="otros-tab" data-bs-toggle="tab" data-bs-target="#otros-tab-pane" type="button" role="tab" aria-controls="otros-tab-pane" aria-selected="false">Agregar Trabajo</button>
     </li>
     </ul>
 
@@ -186,7 +186,10 @@
             <label class="col-12 col-sm-4 col-form-label">Imagen del trabajo:</label>
             <div class="col-12 col-sm-8">
             <div class="input-group">
-                <input type="file" id="fotosServicio" name="fotosServicio" accept="image/*" required>
+                <!-- <input type="file" id="fotosServicio" name="fotosServicio" accept="image/*" required> -->
+                <input type="file" id="fotosServicio" name="fotosServicio" accept="image/*" onchange="previsualizarImagen(event)" required>
+                <img id="imagenPrevia" src="#" alt="Vista previa de la imagen" style="max-width: 200px;     max-height: 200px; display: none;">
+
             </div>
             </div>
         </div>

@@ -32,7 +32,7 @@ body{
 .container{
     flex-grow: 1;
     font-family: 'Courier New', Courier, monospace;
-    color: #ffffff;
+    /* color: #000000; */
     background-color: rgba(0, 0, 0, 0.2);
     border: none;
     padding: auto;

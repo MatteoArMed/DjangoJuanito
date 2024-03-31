@@ -53,3 +53,20 @@ function enviarTrabajo() {
     document.getElementById('addservicio').submit();
     return true;
 }
+
+
+function previsualizarImagen(event) {
+    var input = event.target;
+    var imagenPrevia = document.getElementById('imagenPrevia');
+    if (input.files && input.files[0]) {
+        var lector = new FileReader();
+        lector.onload = function(e) {
+            imagenPrevia.src = e.target.result;
+            imagenPrevia.style.display = 'block';
+        }
+        lector.readAsDataURL(input.files[0]);
+    } else {
+        imagenPrevia.src = "#";
+        imagenPrevia.style.display = 'none';
+    }
+}
