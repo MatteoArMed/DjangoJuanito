@@ -1,0 +1,39 @@
+{% extends './base.html' %}
+{% load static %} 
+
+{% block contenido %}  
+
+<div class="container">
+<div class="row">
+{% if servicio %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="form-group">
+    <h1>Nombre Servicio</h1>
+    <textarea class="form-control" name="nombreServicio" id="nombreServicio" rows="5">{{ servicio.nombre_trabajo }}</textarea>
+    
+    <h1>Sub Titulo</h1>
+    <textarea class="form-control" name="subtitulo" id="subtitulo" rows="5">{{ servicio.sub_titulo }} </textarea>
+    
+    <h1>Descripción</h1>
+    <textarea class="form-control" name="descripcionServicio" id="descripcionServicio" rows="5">{{ servicio.descripcion }} </textarea>
+    
+    <h1>Precio</h1>
+    <input  name="precioservicio" id="precioservicio" value="{{ servicio.precio }}" placeholder="Solo numeros">
+
+    <h1>Imagen</h1>
+    <input type="file" name="imagenServicio" id="imagenServicio" accept="image/*">
+
+</div>
+<br>
+<button class="btn btn-primary" type="submit">Guardar cambios</button>
+</form>
+
+{% else %}
+<h4>No se encontro el servicio para modificar</h4>
+{% endif %}
+</div>
+</div>
+
+
+{% endblock %}

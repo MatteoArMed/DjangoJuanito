@@ -43,7 +43,7 @@
             <form action="{% url 'correoLeido' correosnoleidos.pk %}" method="POST">
                 {% csrf_token %}
                 <input type="checkbox" value="True" name="cambioEstado" id="cambioEstado">
-                <input type="submit" value="Enviar" class="btn btn-primary">
+                <input type="submit" value="Enviar" class="btn btn btn-outline-light">
             </form>
         </a>
     </a>
@@ -72,11 +72,10 @@
             {{correosleidos.descripcion_trabajo}} 
         </strong>
     </span>
-    <a href="{% url 'correoNoLeido' pk=correosleidos.pk %}" style="text-decoration: none;">
-        <form action="{% url 'correoNoLeido' correosleidos.pk %}" method="POST">
+    <a href="{% url 'correoNoLeido' pk=correosleidos.pk %}" style="text-decoration: none;"><form action="{% url 'correoNoLeido' correosleidos.pk %}" method="POST">
             {% csrf_token %}
             <input type="checkbox" value="False" name="correoNoLeido" id="correoNoLeido">
-            <input type="submit" value="Enviar" class="btn btn-primary">
+            <input type="submit" value="Cambiar Estado" class="btn btn btn-outline-light">
         </form>
     </a>
 
@@ -127,9 +126,8 @@
         </strong>
     </span>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Eliminar Servicio
-      </button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar Servicio</button>
+    <a class="btn btn-secondary" href="{% url 'modificar' pk=servicio.id %}">Modificar Servicio</a>
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,6 +148,7 @@
       </div>
     </div>
   </div>
+  
     </div>
         {% endfor %}
     </div>
