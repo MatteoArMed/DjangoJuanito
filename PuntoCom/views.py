@@ -1,8 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.decorators import login_required
 from .models import Contacto, Servicios
+
 
 def home(request):
     return render(request, 'home.html')
+
+def login(request):
+    if request.method != "POST":
+        context = {'mensaje': 'Ingresa tus credenciales'}
+        return render(request, 'registration/login.html',context)
+    else:
+        usuario = request.POST["usuario"]
+        contrasenna = request.POST["contrasenna"]
+
+        user = authenticate(request, username=usuario, password=contrasenna)
+        if user is not None:
+            auth_login(request,user)
+            return redirect('home')
+        else:
+            context = {'mensaje':'Usuario o contraseña incorrectas'}
+            return render(request,'registration/login.html',context)
+
+
 
 def contacto(request):
     if request.method != "POST":
@@ -36,6 +57,7 @@ def obrasmenores(request):
 def quienesomos(request):
     return render(request, 'quienesomos.html')
 
+@login_required
 def addservicio(request):
     contactos = Contacto.objects.all() #Traemos todos los mensajes de contacto
     servicios = Servicios.objects.all() #Traemos todos los servicios disponibles
@@ -77,10 +99,12 @@ def addservicio(request):
         obj.save()
         print('Datos guardados')
         context = {
-            'mensaje':'Servicio creado'
+            'mensaje':'Trabajo creado'
         }
         return render(request,'mensajes.html',context)
     
+def error(request):
+    return render(request,'mensajeRespuestaComun')
 
 
 def eliminarServicio(request,pk):
@@ -90,11 +114,11 @@ def eliminarServicio(request,pk):
         servicios.delete()
         print("Servicio eliminado")
         servicio = Servicios.objects.all()
-        context = {'mensaje':'Servicio eliminado','servicios':servicio}
+        context = {'mensaje':'Trabajo eliminado','servicios':servicio}
         return render(request,'mensajes.html',context)
     except:
         servicios = Servicios.objects.all()
-        context = {'mensaje':'Servicio no existe','servicios':servicios}
+        context = {'mensaje':'Trabajo no existe','servicios':servicios}
         return render(request,'addservicios.html',context)
 
 def mensajeRespuesta(request):
@@ -142,7 +166,7 @@ def correoNoLeido(request, pk):
             context = {'mensaje':'Se cambia a correo no leido'}
             return render(request,'mensajes.html',context)
 
-
+@login_required
 def modificarServicio(request, pk):
     if pk != "":
         servicio = Servicios.objects.get(id=pk)
@@ -168,28 +192,10 @@ def modificarServicio(request, pk):
             servicio.precio = precioServicio
             servicio.save()
 
-            context = {'mensaje':'Servicio modificado'}
+            context = {'mensaje':'Trabajo modificado'}
             print('Se envian datos')
             return render(request, 'mensajes.html',context)
 
         else:
-            context = {'mensaje': 'Error, el servicio no existe...'}
+            context = {'mensaje': 'Error, el trabajo no existe...'}
             return render(request,'mensajes.html',context)
-
-
-
-# @login_required
-# def eliminarTrabajo(request,pk):
-#     context = {}
-#     try:
-#         trabajo = Atencion.objects.get(id=pk)
-
-#         trabajo.delete()
-#         print('Trabajo Eliminado')
-#         trabajos =  Atencion.objects.all()
-#         context ={'mensaje':'Trabajo Eliminado', 'trabajos':trabajos}
-#         return render(request,'mecanico/datosContacto.html',context)
-#     except:
-#         trabajos =  Atencion.objects.all()
-#         context={'mensaje':'El trabajo no existe','trabajos':trabajos}
-#         return render(request,'mecanico/administrarTrabajos.html',context)

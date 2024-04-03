@@ -29,7 +29,10 @@ SECRET_KEY = 'django-insecure--0j=_nr_1ebkca=h60xgz#6j%+^%2_oo()-rnos6nz0d3-n%0t
 DEBUG = True
 
 # ALLOWED_HOSTS = ['juanitopuntocom.sa-east-1.elasticbeanstalk.com']
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -71,6 +74,8 @@ TEMPLATES = [
         },
     },
 ]
+
+WSGI_APPLICATION = 'JuanitoPuntoCom.wsgi.application'
 
 # AWS_ACCESS_KEY_ID = 'AKIA2VWFHJZ6N5MTUUQK'
 # AWS_SECRET_ACCESS_KEY = '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'
