@@ -3,9 +3,10 @@
 {% load static %} 
 
 {% block contenido %}  
-
+<link rel="stylesheet" href="{% static 'css/addservicios.css' %}">
 
 <div class="Servicios col-12">
+    
     <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="btn btn-outline-dark active" id="correosnoleidos-tab" data-bs-toggle="tab" data-bs-target="#correosnoleidos-tab-pane" type="button" role="tab" aria-controls="correosnoleidos-tab-pane" aria-selected="true">Correos no leidos</button>
@@ -24,13 +25,14 @@
     <div class="tab-content" id="myTabContent">
     
     <div class="tab-pane fade show active" id="correosnoleidos-tab-pane" role="tabpanel" aria-labelledby="correosnoleidos-tab" tabindex="0">
-    <div class="row">
+    <div class="row cajaCorreosLeidos">
         {% for correosnoleidos in correonoleido %}
     <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
         <!-- <img src="{% static 'imagenes/calefont.png' %}" alt="imagenprueba" class="img-fluid rounded mx-auto d-block calefont" > -->
         <h3 class="text-center">Correo: {{correosnoleidos.correo_contacto}}</h3>
         <h3 class="text-center">Correo: {{correosnoleidos.fecha_contacto}}</h3>
-        <h4 class="text-center text-sm-center text-lg-start"><strong>Tipo de Trabajo: {{correosnoleidos.tipo_trabajo}} </strong></h4>
+        <h3 class="text-center text-sm-center text-lg-start"><strong>Tipo de Trabajo:{{correosnoleidos.tipo_trabajo}} </strong></h3>
+        
         <!-- <h6 class="text-center text-sm-center text-lg-start">Precio solo contempla visita y presupuesto de trabajo</h6> -->
     </div>
     <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 cajaDerecha text-center text-sm-center text-lg-start">
@@ -44,7 +46,7 @@
             <form action="{% url 'correoLeido' correosnoleidos.pk %}" method="POST">
                 {% csrf_token %}
                 <input type="checkbox" value="True" name="cambioEstado" id="cambioEstado">
-                <input type="submit" value="Enviar" class="btn btn btn-outline-light">
+                <input type="submit" value="Cambiar a leido" class="btn btn btn-outline-light">
             </form>
         </a>
     </a>
@@ -57,7 +59,7 @@
     </div>
 
     <div class="tab-pane" id="correosleidos-tab-pane" role="tabpanel" aria-labelledby="correosleidos-tab" tabindex="0">
-    <div class="row">
+    <div class="row cajaCorreosLeidos">
         {% for correosleidos in correoleido %}
     <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
         <!-- <img src="{% static 'imagenes/calefont.png' %}" alt="imagenprueba" class="img-fluid rounded mx-auto d-block calefont" > -->
@@ -87,95 +89,102 @@
     </div>
 
     <div class="tab-pane" id="servicios-tab-pane" role="tabpanel" aria-labelledby="servicios-tab" tabindex="0">
-    <div class="row">
-        {% for servicio in servicios %}
-    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
-        <img src="{{ servicio.imagen_trabajo }}" alt="servicios" class="img-fluid rounded mx-auto d-block servicios" >
-        <h5 class="text-center">{{servicio.nombre_trabajo}}</h5>
-        {% load humanize %}
-        <h1 class="text-center text-sm-center 
-        text-lg-start"><strong>
-             <script>
-                // Función para formatear el número en formato CLP sin los últimos dos dígitos y con símbolo $
-                function formatNumberCLP(num) {
-                    num = num.toFixed(2);
-                    numSplit = num.split('.');
-                    int = numSplit[0];
-                    dec = numSplit[1].slice(0, -2); // Eliminar los últimos dos dígitos decimales
-            
-                    int = int.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                    return "$" + int + (dec ? ',' + dec : ''); // Agregar el símbolo $ y decimales solo si existen
-                }
-                
-                // Obtener el número sin formato
-                var originalNumber = {{ servicio.precio }};
-                
-                // Formatear el número usando JavaScript
-                var formattedNumberCLP = formatNumberCLP(originalNumber);
-                
-                // Mostrar el número formateado
-                document.write(formattedNumberCLP);
-            </script>
-
-        </strong></h1>
-        <h6 class="text-center text-sm-center text-lg-start">{{servicio.sub_titulo}}</h6>
-    </div>
-    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center cajaDerecha">
-    <span>
-        <strong>
-        {{servicio.descripcion}}
-        </strong>
-    </span>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar Servicio</button>
-    <a class="btn btn-secondary" href="{% url 'modificar' pk=servicio.id %}">Modificar Servicio</a>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">¿Estas seguro que quieres eliminar este servicio?</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="row">
+            {% for servicio in servicios %}
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <div class="cajaServicios">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{ servicio.imagen_trabajo }}" alt="servicios" class="mx-auto d-block img_trabajo">
+                        </div>
+                        <div class="col-12">
+                            <h5 class="text-center">{{servicio.nombre_trabajo}}</h5>
+                        </div>
+                        <div class="col-12">
+                            {% load humanize %}
+                            <h1 class="text-center text-sm-center text-lg-center"><strong>
+                                <script>
+                                    // Función para formatear el número en formato CLP sin los últimos dos dígitos y con símbolo $
+                                    function formatNumberCLP(num) {
+                                        num = num.toFixed(2);
+                                        numSplit = num.split('.');
+                                        int = numSplit[0];
+                                        dec = numSplit[1].slice(0, -2); // Eliminar los últimos dos dígitos decimales
+                                
+                                        int = int.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                                        return "$" + int + (dec ? ',' + dec : ''); // Agregar el símbolo $ y decimales solo si existen
+                                    }
+                                    
+                                    // Obtener el número sin formato
+                                    var originalNumber = {{ servicio.precio }};
+                                    
+                                    // Formatear el número usando JavaScript
+                                    var formattedNumberCLP = formatNumberCLP(originalNumber);
+                                    
+                                    // Mostrar el número formateado
+                                    document.write(formattedNumberCLP);
+                                </script>
+                            </strong></h1>
+                        </div>
+                        <div class="col-12">
+                            <h6 class="text-center text-sm-center text-lg-center">{{servicio.sub_titulo}}</h6>
+                        </div>
+                        <div class="col-sm-6 col-md-12 text-center cajaDerecha">
+                            <!-- Botones -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar Servicio</button>
+                            <a class="btn btn-secondary " href="{% url 'modificar' pk=servicio.id %}">Modificar Servicio</a>
+                            <div class="col-12 text-center">
+                                <span><br><strong>{{servicio.descripcion}}</strong></span>
+                            </div>
+                        
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">¿Estas seguro que quieres eliminar este servicio?</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <div class="alert alert-danger" role="alert">El servicio se eliminará para siempre
+                                        </div>    
+                                        <p>
+                                            <a href="{% url 'eliminarServicio' pk=servicio.id %}" class="btn btn-danger">Eliminar</a>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        <div class="modal-body">
-                <div class="alert alert-danger" role="alert">El servicio se eliminará para siempre
-                </div>    
-                <p>
-                    <a href="{% url 'eliminarServicio' pk=servicio.id %}" class="btn btn-danger">Eliminar</a>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </p>
-        </div>
-      </div>
     </div>
-  </div>
-  
-    </div>
-        {% endfor %}
-    </div>
-    </div>
+    
     
     <div class="tab-pane" id="otros-tab-pane" role="tabpanel" aria-labelledby="otros-tab" tabindex="0">
 
     <div class="row">
 
-    <div class="card-body">
+    <div class="card-body Addservicio">
         <form action="addservicio" method="POST" enctype="multipart/form-data" onsubmit="return enviarTrabajo()">
         {% csrf_token %}
-        <h2>Ingresa el trabajo</h2>
+        <h2 class="fw-bold">Ingresa el trabajo</h2>
         <div class="form-group row">
-            <label for="nombreServicio">Nombre:</label>
+            <label for="nombreServicio" class="fw-bold">Nombre:</label>
             <input type="text" id="nombreServicio" name="nombreServicio" placeholder="Escribe el titulo de tu trabajo" class="form-control">
-            <label for="subTitulo">Sub Titulo:</label>
-            <input type="text" id="subTitulo" name="subTitulo" placeholder="Un subtitulo breve que explique el trabajo" class="form-control">
+            <label for="subTitulo" class="fw-bold">Sub Titulo:</label>
+            <input type="text" id="subTitulo" name="subTitulo" placeholder="Un subtitulo breve que explique el trabajo" class="form-control"    >
         </div>
         <br>
         <div class="form-group row">
-            <label for="descripcionServicio" class="col-12 col-sm-4 col-form-label">Descripciòn Servicio:</label>
+            <label for="descripcionServicio" class="col-12 col-sm-4 col-form-label fw-bold">Descripción Servicio:</label>
             <div class="col-12 col-sm-8">
-            <input type="text" class="form-control" id="descripcionServicio" name="descripcionServicio" placeholder="Una descripciòn breve de lo que es el trabajo">
+            <input type="text" class="form-control" id="descripcionServicio" name="descripcionServicio" placeholder="Una descripción breve de lo que es el trabajo">
             </div>
-            <label for="precioServicio" class="col-12 col-sm-4 col-form-label">Precio:</label>
+            <label for="precioServicio" class="col-12 col-sm-4 col-form-label fw-bold">Precio:</label>
             <div class="col-12 col-sm-8">
             <br>
             <input type="number" id="precioServicio" name="precioServicio" value="0">
@@ -183,7 +192,7 @@
         </div>
         <br>
         <div class="form-group row">
-            <label class="col-12 col-sm-4 col-form-label">Imagen del trabajo:</label>
+            <label class="col-12 col-sm-4 col-form-label fw-bold">Imagen del trabajo:</label>
             <div class="col-12 col-sm-8">
             <div class="input-group">
                 <!-- <input type="file" id="fotosServicio" name="fotosServicio" accept="image/*" required> -->
@@ -211,22 +220,71 @@
 {% endblock %}
 
 
+<div class="tab-pane" id="servicios-tab-pane" role="tabpanel" aria-labelledby="servicios-tab" tabindex="0">
+    <div class="row cajaServicios">
+        {% for servicio in servicios %}
+    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
+        <img src="{{ servicio.imagen_trabajo }}" alt="servicios" class="mx-auto d-block img_trabajo" >
+        <h5 class="text-center">{{servicio.nombre_trabajo}}</h5>
+        {% load humanize %}
+        <h1 class="text-center text-sm-center 
+        text-lg-center"><strong>
+             <script>
+                // Función para formatear el número en formato CLP sin los últimos dos dígitos y con símbolo $
+                function formatNumberCLP(num) {
+                    num = num.toFixed(2);
+                    numSplit = num.split('.');
+                    int = numSplit[0];
+                    dec = numSplit[1].slice(0, -2); // Eliminar los últimos dos dígitos decimales
+            
+                    int = int.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    return "$" + int + (dec ? ',' + dec : ''); // Agregar el símbolo $ y decimales solo si existen
+                }
+                
+                // Obtener el número sin formato
+                var originalNumber = {{ servicio.precio }};
+                
+                // Formatear el número usando JavaScript
+                var formattedNumberCLP = formatNumberCLP(originalNumber);
+                
+                // Mostrar el número formateado
+                document.write(formattedNumberCLP);
+            </script>
 
-<div class="container">
-    {% for contacto in contactos %}
-    <div class="row text-start fw-semibold" >
-        <div class="card mb-4 shadow-lg border border-0 Textoderecho">
-            <div class="card-body">
-                <img src="{% static 'imagenes/Color_Full.png' %}" alt="Logocolor" class="img-fluid Logocolor">
-                <p>Correo: {{contacto.correo_contacto}}</p>
-                <h5 class="card-title fw-bold">Tipo de Trabajo: {{contacto.tipo_trabajo}} </h5>
-                <p class="card-text text-start fw-semibold">Descripción: 
-                <br>
-                {{contacto.descripcion_trabajo}}
-                </p>
-            </div>
-        </div>
+        </strong></h1>
+        <h6 class="text-center text-sm-center text-lg-center">{{servicio.sub_titulo}}</h6>
     </div>
-    {% endfor %}
-</div>
-
+    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center cajaDerecha">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar Servicio</button>
+        <a class="btn btn-secondary" href="{% url 'modificar' pk=servicio.id %}">Modificar Servicio</a>
+    <span>
+        <br>
+        <strong>
+        {{servicio.descripcion}}
+        </strong>
+    </span>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">¿Estas seguro que quieres eliminar este servicio?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <div class="alert alert-danger" role="alert">El servicio se eliminará para siempre
+                </div>    
+                <p>
+                    <a href="{% url 'eliminarServicio' pk=servicio.id %}" class="btn btn-danger">Eliminar</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    </div>
+        {% endfor %}
+    </div>
+    </div>

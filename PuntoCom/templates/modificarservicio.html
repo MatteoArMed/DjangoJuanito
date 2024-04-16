@@ -2,8 +2,9 @@
 {% load static %} 
 
 {% block contenido %}  
+<link rel="stylesheet" href="{% static 'css/addservicios.css' %}">
 
-<div class="container">
+<div class="container cajaServicios">
 <div class="row">
 {% if servicio %}
 <form action="" method="POST" enctype="multipart/form-data">
@@ -27,6 +28,7 @@
 </div>
 <br>
 <button class="btn btn-primary" type="submit">Guardar cambios</button>
+<a href="{% url 'addservicio' %}" class="btn btn-secondary">Volver</a>
 </form>
 
 {% else %}
