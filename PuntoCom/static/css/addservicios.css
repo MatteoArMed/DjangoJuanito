@@ -1,0 +1,50 @@
+.img_trabajo{
+    width: 400px;
+    height: 300px;
+    margin: 2%;
+    border-radius: 10em;
+
+}
+.cajaServicios{
+    display: flex;
+    box-shadow: 4px 6px 2px 1px rgba(22, 22, 26, 0.3);
+    background-color: rgba(244, 241, 222, 0.7);
+    border-radius: 1em;
+    margin: 1%;
+    /* text-overflow: ellipsis; */
+}
+
+.btn{
+    color:#000;
+    background-color:rgba(220,220,220, 0.7);
+    font-weight: bold;
+}
+
+.cajaDerecha{
+    margin-top: 2%;
+    padding: 3%;
+}
+
+#myTab{
+    justify-content: space-around;
+}
+
+.Addservicio{
+    box-shadow: 4px 6px 2px 1px rgba(22, 22, 26, 0.3);
+    background-color: rgba(244, 241, 222, 0.7);
+    color: #000000;
+    padding: 3%;
+    border-radius: 1em;
+    margin: 1%;
+}
+.cajaCorreosLeidos{
+    box-shadow: 4px 6px 2px 1px rgba(22, 22, 26, 0.3);
+    background-color: rgba(244, 241, 222, 0.7);
+    color: #000000;
+    padding: 3%;
+    border-radius: 1em;
+    margin: 1%;
+    text-align: start;
+}
+
+
