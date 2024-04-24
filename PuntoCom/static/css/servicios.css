@@ -23,12 +23,10 @@
     height: 380px;
 
 }
-.cajaIzquierda{
 
-}
 .cajaDerecha{
-    margin-top: 10%;
-    padding: 3%;
+    margin-top: 1%;
+    padding: 1%;
 }
 
 #myTab{

@@ -93,9 +93,9 @@
             {% for servicio in servicios %}
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="cajaServicios">
-                    <div class="row">
+                    <div class="row-col-auto">
                         <div class="col-12">
-                            <img src="{{ servicio.imagen_trabajo }}" alt="servicios" class="mx-auto d-block img_trabajo">
+                            <img src="{{ servicio.imagen_trabajo }}" alt="servicios" class="img-fluid mx-auto d-block img_trabajo">
                         </div>
                         <div class="col-12">
                             <h5 class="text-center">{{servicio.nombre_trabajo}}</h5>
@@ -129,11 +129,11 @@
                         <div class="col-12">
                             <h6 class="text-center text-sm-center text-lg-center">{{servicio.sub_titulo}}</h6>
                         </div>
-                        <div class="col-sm-6 col-md-12 text-center cajaDerecha">
+                        <div class="row-col-auto text-center cajaDerecha">
                             <!-- Botones -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar Servicio</button>
                             <a class="btn btn-secondary " href="{% url 'modificar' pk=servicio.id %}">Modificar Servicio</a>
-                            <div class="col-12 text-center">
+                            <div class="col-12" style="text-align: justify;" >
                                 <span><br><strong>{{servicio.descripcion}}</strong></span>
                             </div>
                         

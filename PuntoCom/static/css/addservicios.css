@@ -1,12 +1,12 @@
 .img_trabajo{
-    width: 400px;
-    height: 300px;
-    margin: 2%;
-    border-radius: 10em;
+    width: 300px;
+    height: 200px;
+    margin-top: 2%;
+    border-radius: 5em;
 
 }
 .cajaServicios{
-    display: flex;
+    display: block;
     box-shadow: 4px 6px 2px 1px rgba(22, 22, 26, 0.3);
     background-color: rgba(244, 241, 222, 0.7);
     border-radius: 1em;
@@ -20,8 +20,10 @@
 }
 
 .cajaDerecha{
-    margin-top: 2%;
-    padding: 3%;
+    margin-top: 1%;
+    padding: 1%;
+    margin: 1%;
+
 }
 
 #myTab{
