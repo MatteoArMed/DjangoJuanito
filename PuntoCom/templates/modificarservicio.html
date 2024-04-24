@@ -11,7 +11,7 @@
     {% csrf_token %}
 <div class="form-group">
     <h1>Nombre Servicio</h1>
-    <textarea class="form-control" name="nombreServicio" id="nombreServicio" rows="5">{{ servicio.nombre_trabajo }}</textarea>
+    <textarea class="form-control" name="nombreServicio" id="nombreServicio" rows="5" cols="100" >{{ servicio.nombre_trabajo }}</textarea>
     
     <h1>Sub Titulo</h1>
     <textarea class="form-control" name="subtitulo" id="subtitulo" rows="5">{{ servicio.sub_titulo }} </textarea>
