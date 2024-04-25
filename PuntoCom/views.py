@@ -60,7 +60,8 @@ def quienesomos(request):
 @login_required
 def addservicio(request):
     contactos = Contacto.objects.all() #Traemos todos los mensajes de contacto
-    servicios = Servicios.objects.all() #Traemos todos los servicios disponibles
+    # servicios = Servicios.objects.all() #Traemos todos los servicios disponibles
+    servicios = Servicios.objects.filter(estado_trabajo=True) #Traemos todos los servicios disponibles
     correosleidos = Contacto.objects.filter(estado_correo=True) #Traemos los coreros leidos
     correosnoleidos = Contacto.objects.filter(estado_correo=False) #Traemos los coreros no leidos
 
@@ -108,10 +109,25 @@ def error(request):
 
 
 def eliminarServicio(request,pk):
+    # if pk != "":
+    #     servicio = Servicios.objects.get(id=pk)
+    #     context = {'servicio': servicio}
+    
+    # if request.method != "POST":
+    #     return render(request,'modificarServicio.html',context)
+
+    # if request.method == "POST":
+    #     servicio.estado_trabajo = False
+    #     servicio.save()
+    #     context = {'mensaje':'Trabajo modificado'}
+    #     print('Se envian datos')
+    #     return render(request, 'mensajes.html',context)
+    
     context = {}
     try:
         servicios = Servicios.objects.get(id=pk)
-        servicios.delete()
+        servicios.estado_trabajo = False
+        servicios.save()
         print("Servicio eliminado")
         servicio = Servicios.objects.all()
         context = {'mensaje':'Trabajo eliminado','servicios':servicio}
@@ -120,6 +136,10 @@ def eliminarServicio(request,pk):
         servicios = Servicios.objects.all()
         context = {'mensaje':'Trabajo no existe','servicios':servicios}
         return render(request,'addservicios.html',context)
+
+
+
+
 
 def mensajeRespuesta(request):
     if request.method != 'POST':

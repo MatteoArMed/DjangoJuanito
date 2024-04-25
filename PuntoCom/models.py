@@ -29,6 +29,7 @@ class Servicios(models.Model):
     descripcion = models.TextField(max_length=1000,blank=False,null=False)
     precio = models.IntegerField(blank=False,null=False)
     imagen_trabajo = models.ImageField(upload_to="fotoservicios",null=True)
+    estado_trabajo = models.BooleanField(default=True)
     def __str__(self):
         return self.nombre_trabajo
     
