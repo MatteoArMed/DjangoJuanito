@@ -20,7 +20,7 @@
     <textarea class="form-control" name="descripcionServicio" id="descripcionServicio" rows="5">{{ servicio.descripcion }} </textarea>
     
     <h1>Precio</h1>
-    <input  name="precioservicio" id="precioservicio" value="{{ servicio.precio }}" placeholder="Solo numeros">
+    <input type="number" name="precioservicio" id="precioservicio" value="{{ servicio.precio }}" placeholder="Solo numeros">
 
     <h1>Imagen</h1>
     <input type="file" name="imagenServicio" id="imagenServicio" accept="image/*">
