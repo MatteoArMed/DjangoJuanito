@@ -31,7 +31,7 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar Servicio</button>
 
 <a href="{% url 'addservicio' %}" class="btn btn-secondary">Volver</a>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade justify-content-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -39,7 +39,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-                <div class="alert alert-danger" role="alert">El servicio se eliminará para siempre
+                <div class="alert alert-danger" role="alert">El servicio se dará de baja
                 </div>    
                 <p>
                     <a href="{% url 'eliminarServicio' pk=servicio.id %}" class="btn btn-danger">Eliminar</a>
