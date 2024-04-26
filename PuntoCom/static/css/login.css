@@ -1,0 +1,12 @@
+/* Parte del login */
+
+.cajaLogin{
+    display: flex;
+    box-shadow: 4px 6px 2px 1px rgba(22, 22, 26, 0.3);
+    background-color: rgba(244, 241, 222, 0.7);
+    border-radius: 1em;
+    margin: 1%;
+    padding: 2%;
+
+    
+}
